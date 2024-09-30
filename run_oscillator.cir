@@ -1,0 +1,56 @@
+*Oscillator Stimulus
+
+* simulation parameters
+.param vhigh=1.2v
+.temp 27
+
+* global power nets
+.global vss vdd
+
+* import subcircuit card
+.include ./oscillator1.cir
+.include ./oscillator2.cir
+.include ./oscillator3.cir
+.include ./oscillator4.cir
+.include ./oscillator5.cir
+.include ./oscillator6.cir
+.include ./oscillator7.cir
+.include ./oscillator8.cir
+
+* declare component, X for subcircuits
+x0 en osc1 oscillator1
+x1 en osc2 oscillator2
+x2 en osc3 oscillator3
+x3 en osc4 oscillator4
+x4 en osc5 oscillator5
+x5 en osc6 oscillator6
+x6 en osc7 oscillator7
+x7 en osc8 oscillator8
+
+vss vss 0 dc 0
+vdd vdd 0 dc vhigh
+
+*stimulus
+*ve en vss pwl (0n 0v 4n 0v 5n vhigh 20n vhigh 21n 0v n 0v)
+ve en vss PULSE (0 vhigh 5n 0n 0n 20n)
+
+.tran 0.01n 30n 0n
+.control
+
+* run simulation
+run
+
+* plot ve and vo
+plot {v(en)} {v(osc1)+2} {v(osc2)+4} {v(osc3)+6} {v(osc4)+8} 
++{v(osc5)+10} {v(osc6)+12} {v(osc7)+14} {v(osc8)+16}
+
+* set column names as signals
+set wr_vecnames
+
+* set a single scale for measurements
+set wr_singlescale
+
+* write data to CSV file
+wrdata oscillator_data.txt en osc1 osc2 osc3 osc4 osc5 osc6 osc7 osc8
+.endc
+.end

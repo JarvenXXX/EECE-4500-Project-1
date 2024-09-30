@@ -1,0 +1,21 @@
+* NAND
+
+* Declare params
+.param nandpw=260n
+.param pLen=0.07u
+.param nLen=0.07u
+.param ntoxp = 1.85n
+.param ptoxp = 1.95n
+
+* transistor model declarations
+.model tp pmos level=54 version=4.8.2 L={pLen} W=nandpw toxp=ptoxp
+.model tn nmos level=54 version=4.8.2 L={nLen} W=130n toxp=ntoxp
+
+.subckt nand a b o
+
+M1 o b vdd vdd tp
+M2 o a vdd vdd tp
+M3 o a n0 vss tn
+M4 n0 b vss vss tn
+
+.ends

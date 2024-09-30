@@ -1,0 +1,23 @@
+*Oscillator
+
+*Imports
+.include ./NAND.cir
+.include ./inverter.cir
+
+*Declare subckt
+.subckt oscillator3 en n12
+x0 en n12 n0 NAND
+x1 n0 n1 inverter plen=69.3067n pwid=207.295n nlen=70.7952n nwid=120.456n ptox=2.02343n ntox=1.87718n
+x2 n1 n2 inverter plen=69.1388n pwid=213.137n nlen=67.7378n nwid=129.081n ptox=1.8164n ntox=1.95965n
+x3 n2 n3 inverter plen=69.2697n pwid=229.513n nlen=67.9744n nwid=122.82n ptox=2.05637n ntox=1.83668n
+x4 n3 n4 inverter plen=70.8799n pwid=219.726n nlen=71.8011n nwid=141.813n ptox=1.97625n ntox=1.86816n
+x5 n4 n5 inverter plen=66.6293n pwid=222.337n nlen=63.3012n nwid=130.442n ptox=2.12564n ntox=2.00662n
+x6 n5 n6 inverter plen=68.8777n pwid=221.717n nlen=67.6944n nwid=137.164n ptox=1.99661n ntox=1.87678n
+x7 n6 n7 inverter plen=70.0378n pwid=219.707n nlen=72.4309n nwid=124.854n ptox=1.77856n ntox=1.7305n
+x8 n7 n8 inverter plen=69.1135n pwid=219.893n nlen=75.2824n nwid=128.93n ptox=2.02933n ntox=1.83189n
+x9 n8 n9 inverter plen=66.9526n pwid=235.539n nlen=73.6737n nwid=124.927n ptox=1.96175n ntox=1.8541n
+x10 n9 n10 inverter plen=63.9062n pwid=208.021n nlen=59.9692n nwid=126.657n ptox=1.9155n ntox=1.9671n
+x11 n10 n11 inverter plen=66.873n pwid=204.288n nlen=73.6538n nwid=124.827n ptox=1.8982n ntox=1.78957n
+x12 n11 n12 inverter plen=68.5527n pwid=224.723n nlen=70.2591n nwid=136.559n ptox=1.97688n ntox=1.72188n
+
+.ends oscillator3
