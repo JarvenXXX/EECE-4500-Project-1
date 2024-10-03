@@ -53,6 +53,8 @@ end rtl;
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.math_real.all;
 
 entity toplevel is
 	generic (
@@ -61,32 +63,106 @@ entity toplevel is
 	);
 	port (
 		clock:	in	std_logic;	-- global clock input, 50 MHz clock
-		reset:	in	std_logic	-- global asynchronous reset, button
+		reset:	in	std_logic;	-- global asynchronous reset, button
+		done :  out std_logic
 	);
 end entity toplevel;
 
 architecture top of toplevel is
+
+	Component single_port_ram is
+
+		generic 
+		(
+			DATA_WIDTH : natural := 8;
+			ADDR_WIDTH : natural := 6
+		);
+
+		port 
+		(
+			clk		: in std_logic;
+			addr	: in natural range 0 to 2**ADDR_WIDTH - 1;
+			data	: in std_logic;
+			we		: in std_logic := '0';
+			q		: out std_logic_vector((DATA_WIDTH -1) downto 0)
+		);
+
+	end Component;
+
+	Component control_unit is
+		generic (
+			challenge_bits:		positive := 4;
+			clock_frequency:	positive := 200;	-- in MHz
+			delay_us:			positive := 10		-- in microseconds
+			);
+		port (
+			clock:	in	std_logic;
+			reset:	in	std_logic;
+			enable:	in	std_logic;
+		
+			counter_enable:	out	std_logic;
+			counter_reset:	out	std_logic;
+			challenge:		out	std_logic_vector(2*challenge_bits - 1 downto 0);
+			store_response:	out	std_logic;
+			done:	out	std_logic
+		);
+	end Component;
+
+	Component ro_puf is 
+		Generic(ro_length : positive := 13;
+			     ro_count  : positive := 16);
+		Port(reset : in std_logic;
+			  enable: in std_logic;
+	        challenge : in std_logic_vector(2*positive(ceil(log2(real(ro_count / 2)))) - 1 downto 0);
+		     response : out std_logic);
+	End Component;
+	
+	signal controller_counterenable : std_logic;
+	constant challenge_bits: positive := 2 * positive(ceil(log2(real(ro_count / 2))));
+   signal controller_challenge : std_logic_vector(challenge_bits - 1 downto 0);
+	
+	signal store    : std_logic;
+	signal storeen  : std_logic;
 	-- TODO: any signal declarations you may need
 begin
 
 	-- TODO: make instance of ro_puf
 	puf: ro_puf
 		generic map (
-			ro_lenght => ro_length,
+			ro_length => ro_length,
 			ro_count => ro_count
 		)
 		port map (
-			-- add port information
-			-- should use some signals internal to this architecture
-			-- should use the `reset' input from toplevel
+			reset => reset,
+			enable => controller_counterenable,
+			challenge => controller_challenge,
+			response => store
 		);
 
-	-- TODO: control unit
-	-- use control unit entity from blackboard, make entity here
-	-- uses the `clock' input and the `reset' input from toplevel
+	CTRL: control_unit
+		generic map(
+			challenge_bits => challenge_bits/2
+		)
+		port map(
+			clock => clock,
+			reset => reset,
+			enable => '1',
+			counter_enable => controller_counterenable,
+			challenge => controller_challenge,
+			store_response => storeen,
+			done => done
+		);
 
-	-- TODO: BRAM
-	-- create a BRAM using the IP Catalog, instance it here
-	-- make sure you enable the In-System Memory Viewer!-- Quartus Prime VHDL Template
+	RAM: single_port_ram
+		generic map(
+			DATA_WIDTH => 1,
+			ADDR_WIDTH => challenge_bits
+		)
+		port map(
+			clk => clock,
+			addr => to_integer(unsigned(controller_challenge)),
+			data => store,
+			we => storeen
+		);
 
 end architecture top;
