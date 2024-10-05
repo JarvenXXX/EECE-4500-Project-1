@@ -1,56 +1,3 @@
--- Single port RAM with single read/write address 
-library ieee;
-use ieee.std_logic_1164.all;
-
-entity single_port_ram is
-
-	generic 
-	(
-		DATA_WIDTH : natural := 8;
-		ADDR_WIDTH : natural := 6
-	);
-
-	port 
-	(
-		clk		: in std_logic;
-		addr	: in natural range 0 to 2**ADDR_WIDTH - 1;
-		data	: in std_logic_vector((DATA_WIDTH-1) downto 0);
-		we		: in std_logic := '0';
-		q		: out std_logic_vector((DATA_WIDTH -1) downto 0)
-	);
-
-end entity;
-
-architecture rtl of single_port_ram is
-
-	-- Build a 2-D array type for the RAM
-	subtype word_t is std_logic_vector((DATA_WIDTH-1) downto 0);
-	type memory_t is array(2**ADDR_WIDTH-1 downto 0) of word_t;
-
-	-- Declare the RAM signal.	
-	signal ram : memory_t;
-
-	-- Register to hold the address 
-	signal addr_reg : natural range 0 to 2**ADDR_WIDTH-1;
-
-begin
-
-	process(clk)
-	begin
-	if(rising_edge(clk)) then
-		if(we = '1') then
-			ram(addr) <= data;
-		end if;
-
-		-- Register the address for reading
-		addr_reg <= addr;
-	end if;
-	end process;
-
-	q <= ram(addr_reg);
-
-end rtl;
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -64,27 +11,20 @@ entity toplevel is
 	port (
 		clock:	in	std_logic;	-- global clock input, 50 MHz clock
 		reset:	in	std_logic;	-- global asynchronous reset, button
-		done :  out std_logic
+		done :  out std_logic := '0'
 	);
 end entity toplevel;
 
 architecture top of toplevel is
 
-	Component single_port_ram is
-
-		generic 
+	Component ram is
+		Port
 		(
-			DATA_WIDTH : natural := 8;
-			ADDR_WIDTH : natural := 6
-		);
-
-		port 
-		(
-			clk		: in std_logic;
-			addr	: in natural range 0 to 2**ADDR_WIDTH - 1;
-			data	: in std_logic;
-			we		: in std_logic := '0';
-			q		: out std_logic_vector((DATA_WIDTH -1) downto 0)
+			address		: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
+			clock		: IN STD_LOGIC  := '1';
+			data		: IN STD_LOGIC_VECTOR (0 DOWNTO 0);
+			wren		: IN STD_LOGIC ;
+			q		: OUT STD_LOGIC_VECTOR (0 DOWNTO 0)
 		);
 
 	end Component;
@@ -121,7 +61,7 @@ architecture top of toplevel is
 	constant challenge_bits: positive := 2 * positive(ceil(log2(real(ro_count / 2))));
    signal controller_challenge : std_logic_vector(challenge_bits - 1 downto 0);
 	
-	signal store    : std_logic;
+	signal store    : std_logic_vector(0 downto 0);
 	signal storeen  : std_logic;
 	-- TODO: any signal declarations you may need
 begin
@@ -136,12 +76,13 @@ begin
 			reset => reset,
 			enable => controller_counterenable,
 			challenge => controller_challenge,
-			response => store
+			response => store(0)
 		);
 
 	CTRL: control_unit
 		generic map(
-			challenge_bits => challenge_bits/2
+			challenge_bits => challenge_bits/2,
+			clock_frequency => 50
 		)
 		port map(
 			clock => clock,
@@ -153,16 +94,12 @@ begin
 			done => done
 		);
 
-	RAM: single_port_ram
-		generic map(
-			DATA_WIDTH => 1,
-			ADDR_WIDTH => challenge_bits
-		)
+	SPR: ram
 		port map(
-			clk => clock,
-			addr => to_integer(unsigned(controller_challenge)),
+			clock => clock,
+			address => controller_challenge,
 			data => store,
-			we => storeen
+			wren => storeen
 		);
 
 end architecture top;
