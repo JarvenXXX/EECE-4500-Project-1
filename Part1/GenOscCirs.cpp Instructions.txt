@@ -1,0 +1,7 @@
+This Cpp file is a modified version of a template provided by Professor Arias, and was modified and compiled using MS Visual Studio.
+
+To compile the code, it can either be done through cpp on a Linux terminal, or creating a new VS project and importing the file as a source.
+
+The file generates percentage variations for MOSFET parameters, and internally multiplies the percent difference by our agreed-upon parameters.
+To change these parameters, they must be manually edited in the cpp file within the for loop that prints them over cout. (For example, for tplv*70, 70 must be manually set which represents the PMOS length. All other parameters follow the same procedure).
+The file can be compiled and run numerous times through terminal scripting that redirects the output into .cir files depending on the number of cir files desired. The oscillator cir files are then ready to be simulated through NGSpice.
