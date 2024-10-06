@@ -1,0 +1,281 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+# Date created = 21:19:35  September 26, 2024
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Oscillator_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C6GES
+set_global_assignment -name TOP_LEVEL_ENTITY toplevel
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:19:35  SEPTEMBER 26, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE ring_oscillator.vhd
+set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ring_oscillator_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 ns" -section_id ring_oscillator_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ring_oscillator_tb -section_id ring_oscillator_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ring_oscillator_tb.vhd -section_id ring_oscillator_tb
+set_global_assignment -name VHDL_FILE ro_puf.vhd
+set_global_assignment -name VHDL_FILE control_unit.vhd
+set_global_assignment -name VHDL_FILE toplevel.vhd
+set_global_assignment -name BOARD "Arrow MAX 10 DECA"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clock
+set_location_assignment PIN_P11 -to clock
+set_location_assignment PIN_B8 -to reset
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to reset
+set_location_assignment PIN_A8 -to done
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to done
+set_global_assignment -name QIP_FILE ram.qip
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name TCL_SCRIPT_FILE output_files/place_inverters.tcl
+set_location_assignment LCCOMB_X61_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[0]"
+set_location_assignment LCCOMB_X61_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[1]"
+set_location_assignment LCCOMB_X61_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[2]"
+set_location_assignment LCCOMB_X61_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[3]"
+set_location_assignment LCCOMB_X61_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[4]"
+set_location_assignment LCCOMB_X61_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[5]"
+set_location_assignment LCCOMB_X61_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[6]"
+set_location_assignment LCCOMB_X61_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[7]"
+set_location_assignment LCCOMB_X61_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[8]"
+set_location_assignment LCCOMB_X61_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[9]"
+set_location_assignment LCCOMB_X61_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[10]"
+set_location_assignment LCCOMB_X61_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[11]"
+set_location_assignment LCCOMB_X61_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:15:OSCB|invers[12]"
+set_location_assignment LCCOMB_X54_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[0]"
+set_location_assignment LCCOMB_X54_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[1]"
+set_location_assignment LCCOMB_X54_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[2]"
+set_location_assignment LCCOMB_X54_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[3]"
+set_location_assignment LCCOMB_X54_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[4]"
+set_location_assignment LCCOMB_X54_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[5]"
+set_location_assignment LCCOMB_X54_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[6]"
+set_location_assignment LCCOMB_X54_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[7]"
+set_location_assignment LCCOMB_X54_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[8]"
+set_location_assignment LCCOMB_X54_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[9]"
+set_location_assignment LCCOMB_X54_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[10]"
+set_location_assignment LCCOMB_X54_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[11]"
+set_location_assignment LCCOMB_X54_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:0:OSCA|invers[12]"
+set_location_assignment LCCOMB_X55_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[0]"
+set_location_assignment LCCOMB_X55_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[1]"
+set_location_assignment LCCOMB_X55_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[2]"
+set_location_assignment LCCOMB_X55_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[3]"
+set_location_assignment LCCOMB_X55_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[4]"
+set_location_assignment LCCOMB_X55_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[5]"
+set_location_assignment LCCOMB_X55_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[6]"
+set_location_assignment LCCOMB_X55_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[7]"
+set_location_assignment LCCOMB_X55_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[8]"
+set_location_assignment LCCOMB_X55_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[9]"
+set_location_assignment LCCOMB_X55_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[10]"
+set_location_assignment LCCOMB_X55_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[11]"
+set_location_assignment LCCOMB_X55_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:1:OSCA|invers[12]"
+set_location_assignment LCCOMB_X56_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[0]"
+set_location_assignment LCCOMB_X56_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[1]"
+set_location_assignment LCCOMB_X56_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[2]"
+set_location_assignment LCCOMB_X56_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[3]"
+set_location_assignment LCCOMB_X56_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[4]"
+set_location_assignment LCCOMB_X56_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[5]"
+set_location_assignment LCCOMB_X56_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[6]"
+set_location_assignment LCCOMB_X56_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[7]"
+set_location_assignment LCCOMB_X56_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[8]"
+set_location_assignment LCCOMB_X56_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[9]"
+set_location_assignment LCCOMB_X56_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[10]"
+set_location_assignment LCCOMB_X56_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[11]"
+set_location_assignment LCCOMB_X56_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:2:OSCA|invers[12]"
+set_location_assignment LCCOMB_X57_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[0]"
+set_location_assignment LCCOMB_X57_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[1]"
+set_location_assignment LCCOMB_X57_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[2]"
+set_location_assignment LCCOMB_X57_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[3]"
+set_location_assignment LCCOMB_X57_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[4]"
+set_location_assignment LCCOMB_X57_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[5]"
+set_location_assignment LCCOMB_X57_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[6]"
+set_location_assignment LCCOMB_X57_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[7]"
+set_location_assignment LCCOMB_X57_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[8]"
+set_location_assignment LCCOMB_X57_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[9]"
+set_location_assignment LCCOMB_X57_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[10]"
+set_location_assignment LCCOMB_X57_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[11]"
+set_location_assignment LCCOMB_X57_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:3:OSCA|invers[12]"
+set_location_assignment LCCOMB_X58_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[0]"
+set_location_assignment LCCOMB_X58_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[1]"
+set_location_assignment LCCOMB_X58_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[2]"
+set_location_assignment LCCOMB_X58_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[3]"
+set_location_assignment LCCOMB_X58_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[4]"
+set_location_assignment LCCOMB_X58_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[5]"
+set_location_assignment LCCOMB_X58_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[6]"
+set_location_assignment LCCOMB_X58_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[7]"
+set_location_assignment LCCOMB_X58_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[8]"
+set_location_assignment LCCOMB_X58_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[9]"
+set_location_assignment LCCOMB_X58_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[10]"
+set_location_assignment LCCOMB_X58_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[11]"
+set_location_assignment LCCOMB_X58_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:4:OSCA|invers[12]"
+set_location_assignment LCCOMB_X59_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[0]"
+set_location_assignment LCCOMB_X59_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[1]"
+set_location_assignment LCCOMB_X59_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[2]"
+set_location_assignment LCCOMB_X59_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[3]"
+set_location_assignment LCCOMB_X59_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[4]"
+set_location_assignment LCCOMB_X59_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[5]"
+set_location_assignment LCCOMB_X59_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[6]"
+set_location_assignment LCCOMB_X59_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[7]"
+set_location_assignment LCCOMB_X59_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[8]"
+set_location_assignment LCCOMB_X59_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[9]"
+set_location_assignment LCCOMB_X59_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[10]"
+set_location_assignment LCCOMB_X59_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[11]"
+set_location_assignment LCCOMB_X59_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:5:OSCA|invers[12]"
+set_location_assignment LCCOMB_X60_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[0]"
+set_location_assignment LCCOMB_X60_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[1]"
+set_location_assignment LCCOMB_X60_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[2]"
+set_location_assignment LCCOMB_X60_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[3]"
+set_location_assignment LCCOMB_X60_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[4]"
+set_location_assignment LCCOMB_X60_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[5]"
+set_location_assignment LCCOMB_X60_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[6]"
+set_location_assignment LCCOMB_X60_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[7]"
+set_location_assignment LCCOMB_X60_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[8]"
+set_location_assignment LCCOMB_X60_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[9]"
+set_location_assignment LCCOMB_X60_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[10]"
+set_location_assignment LCCOMB_X60_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[11]"
+set_location_assignment LCCOMB_X60_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:6:OSCA|invers[12]"
+set_location_assignment LCCOMB_X61_Y46_N0 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[0]"
+set_location_assignment LCCOMB_X61_Y46_N2 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[1]"
+set_location_assignment LCCOMB_X61_Y46_N4 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[2]"
+set_location_assignment LCCOMB_X61_Y46_N6 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[3]"
+set_location_assignment LCCOMB_X61_Y46_N8 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[4]"
+set_location_assignment LCCOMB_X61_Y46_N10 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[5]"
+set_location_assignment LCCOMB_X61_Y46_N12 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[6]"
+set_location_assignment LCCOMB_X61_Y46_N14 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[7]"
+set_location_assignment LCCOMB_X61_Y46_N16 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[8]"
+set_location_assignment LCCOMB_X61_Y46_N18 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[9]"
+set_location_assignment LCCOMB_X61_Y46_N20 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[10]"
+set_location_assignment LCCOMB_X61_Y46_N22 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[11]"
+set_location_assignment LCCOMB_X61_Y46_N24 -to "ro_puf:puf|ring_oscillator:\\group_a:7:OSCA|invers[12]"
+set_location_assignment LCCOMB_X54_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[0]"
+set_location_assignment LCCOMB_X54_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[1]"
+set_location_assignment LCCOMB_X54_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[2]"
+set_location_assignment LCCOMB_X54_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[3]"
+set_location_assignment LCCOMB_X54_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[4]"
+set_location_assignment LCCOMB_X54_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[5]"
+set_location_assignment LCCOMB_X54_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[6]"
+set_location_assignment LCCOMB_X54_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[7]"
+set_location_assignment LCCOMB_X54_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[8]"
+set_location_assignment LCCOMB_X54_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[9]"
+set_location_assignment LCCOMB_X54_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[10]"
+set_location_assignment LCCOMB_X54_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[11]"
+set_location_assignment LCCOMB_X54_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:8:OSCB|invers[12]"
+set_location_assignment LCCOMB_X55_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[0]"
+set_location_assignment LCCOMB_X55_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[1]"
+set_location_assignment LCCOMB_X55_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[2]"
+set_location_assignment LCCOMB_X55_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[3]"
+set_location_assignment LCCOMB_X55_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[4]"
+set_location_assignment LCCOMB_X55_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[5]"
+set_location_assignment LCCOMB_X55_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[6]"
+set_location_assignment LCCOMB_X55_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[7]"
+set_location_assignment LCCOMB_X55_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[8]"
+set_location_assignment LCCOMB_X55_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[9]"
+set_location_assignment LCCOMB_X55_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[10]"
+set_location_assignment LCCOMB_X55_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[11]"
+set_location_assignment LCCOMB_X55_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:9:OSCB|invers[12]"
+set_location_assignment LCCOMB_X56_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[0]"
+set_location_assignment LCCOMB_X56_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[1]"
+set_location_assignment LCCOMB_X56_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[2]"
+set_location_assignment LCCOMB_X56_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[3]"
+set_location_assignment LCCOMB_X56_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[4]"
+set_location_assignment LCCOMB_X56_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[5]"
+set_location_assignment LCCOMB_X56_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[6]"
+set_location_assignment LCCOMB_X56_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[7]"
+set_location_assignment LCCOMB_X56_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[8]"
+set_location_assignment LCCOMB_X56_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[9]"
+set_location_assignment LCCOMB_X56_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[10]"
+set_location_assignment LCCOMB_X56_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[11]"
+set_location_assignment LCCOMB_X56_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:10:OSCB|invers[12]"
+set_location_assignment LCCOMB_X57_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[0]"
+set_location_assignment LCCOMB_X57_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[1]"
+set_location_assignment LCCOMB_X57_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[2]"
+set_location_assignment LCCOMB_X57_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[3]"
+set_location_assignment LCCOMB_X57_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[4]"
+set_location_assignment LCCOMB_X57_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[5]"
+set_location_assignment LCCOMB_X57_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[6]"
+set_location_assignment LCCOMB_X57_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[7]"
+set_location_assignment LCCOMB_X57_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[8]"
+set_location_assignment LCCOMB_X57_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[9]"
+set_location_assignment LCCOMB_X57_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[10]"
+set_location_assignment LCCOMB_X57_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[11]"
+set_location_assignment LCCOMB_X57_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:11:OSCB|invers[12]"
+set_location_assignment LCCOMB_X58_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[0]"
+set_location_assignment LCCOMB_X58_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[1]"
+set_location_assignment LCCOMB_X58_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[2]"
+set_location_assignment LCCOMB_X58_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[3]"
+set_location_assignment LCCOMB_X58_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[4]"
+set_location_assignment LCCOMB_X58_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[5]"
+set_location_assignment LCCOMB_X58_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[6]"
+set_location_assignment LCCOMB_X58_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[7]"
+set_location_assignment LCCOMB_X58_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[8]"
+set_location_assignment LCCOMB_X58_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[9]"
+set_location_assignment LCCOMB_X58_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[10]"
+set_location_assignment LCCOMB_X58_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[11]"
+set_location_assignment LCCOMB_X58_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:12:OSCB|invers[12]"
+set_location_assignment LCCOMB_X59_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[0]"
+set_location_assignment LCCOMB_X59_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[1]"
+set_location_assignment LCCOMB_X59_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[2]"
+set_location_assignment LCCOMB_X59_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[3]"
+set_location_assignment LCCOMB_X59_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[4]"
+set_location_assignment LCCOMB_X59_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[5]"
+set_location_assignment LCCOMB_X59_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[6]"
+set_location_assignment LCCOMB_X59_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[7]"
+set_location_assignment LCCOMB_X59_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[8]"
+set_location_assignment LCCOMB_X59_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[9]"
+set_location_assignment LCCOMB_X59_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[10]"
+set_location_assignment LCCOMB_X59_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[11]"
+set_location_assignment LCCOMB_X59_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:13:OSCB|invers[12]"
+set_location_assignment LCCOMB_X60_Y45_N0 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[0]"
+set_location_assignment LCCOMB_X60_Y45_N2 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[1]"
+set_location_assignment LCCOMB_X60_Y45_N4 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[2]"
+set_location_assignment LCCOMB_X60_Y45_N6 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[3]"
+set_location_assignment LCCOMB_X60_Y45_N8 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[4]"
+set_location_assignment LCCOMB_X60_Y45_N10 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[5]"
+set_location_assignment LCCOMB_X60_Y45_N12 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[6]"
+set_location_assignment LCCOMB_X60_Y45_N14 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[7]"
+set_location_assignment LCCOMB_X60_Y45_N16 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[8]"
+set_location_assignment LCCOMB_X60_Y45_N18 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[9]"
+set_location_assignment LCCOMB_X60_Y45_N20 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[10]"
+set_location_assignment LCCOMB_X60_Y45_N22 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[11]"
+set_location_assignment LCCOMB_X60_Y45_N24 -to "ro_puf:puf|ring_oscillator:\\group_b:14:OSCB|invers[12]"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
