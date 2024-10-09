@@ -78,7 +78,7 @@ Begin
 		end process ctr;
 	end generate counters;
 	
-	response <= '1' when counts(group_a_select) < counts(group_b_select) else
+	response <= '1' when counts(group_a_select) < counts(group_b_select + ro_count/2)) else
 					'0';
 	
 End comparison;
